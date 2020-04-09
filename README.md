@@ -43,7 +43,7 @@ Add these fields to the name input. Using a name attribute is required when usin
 
 ```html
 <input 
-    [(ngModel)]="model.name"
+    [(ngModel)]="model.name" <!-- this means any change to this input will change the model.name variable in the ts file -->
     name="name"
 >
 ```
@@ -83,3 +83,10 @@ Then we can create a div which will be hidden when the class on the input is unt
 
 ## 4.4 Submitting the form
 
+Put an event bindings for submitting on the form tag:
+
+```html
+<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+```
+
+Then write a method on the component called ```onSubmit```;
