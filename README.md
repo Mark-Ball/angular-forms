@@ -53,3 +53,30 @@ Also update the form tag with ```#heroForm="ngForm"```
 ```html
 <form #heroForm="ngForm">
 ```
+
+## 4.3 Create a template reference variable
+
+We want to include a message that shows when the selection is invalid. This is done by creating a template reference variable (which is a reference to a DOM element) on the element we want to trigger from.
+
+In this case we add it to the name input because we want to inform the user when this field has an invalid entry.
+
+```html
+<input 
+    type="text"
+    class="form-control"
+    id="name"
+    required
+    [(ngModel)]="model.name"
+    name="name"
+    #name="ngModel" <!-- this is the template reference variable -->
+>
+```
+
+Then we can create a div which will be hidden when the class on the input is untouched or pristine (these classes are given automatically by ngModel).
+
+```html
+<div 
+    [hidden]="name.valid || name.pristine"
+    class="alert alert-danger"    
+>
+```
